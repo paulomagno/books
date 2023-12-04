@@ -15,6 +15,8 @@ class Books extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('books_model');
+        $this->load->library('Pagination_bootstrap');
+        $this->pagination_bootstrap->offset(3);
     }
     
     /**
@@ -23,7 +25,7 @@ class Books extends CI_Controller {
     */
 	public function index()
 	{
-		$data['books'] = $this->books_model->getAllBooks();
+		$data['books'] = $this->pagination_bootstrap->config('index.php/books/index', $this->books_model->getAllBooks());
         $data['pageTitle'] = 'Listagem de Livros';
         
         $this->load->view('templates/header', $data);
@@ -47,11 +49,4 @@ class Books extends CI_Controller {
         $this->load->view('templates/js');
         $this->load->view('pages/books-form', $data);
 	}
-    
-    public function listBooks()
-    {
-        $postData = $this->input->post();
-        $data = $this->books_model->getListBooks($postData);
-        echo json_encode($data);
-    }
 }

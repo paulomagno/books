@@ -21,18 +21,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($books as $book) :?>
-                      <tr>
-                        <td><?= $book['book_title'] ?></td>
-                        <td><?= $book['book_description'] ?></td>
-                        <td><?= $book['book_author'] ?></td>
-                        <td><?= $book['book_pages'] ?></td>
-                        <td><?= $book['book_created_at'] ?></td>
-                        <td>&nbsp;</td>
-                      </tr>
-                    <?php endforeach; ?>
-                    
+                    <?php if($books) :?>
+                        <?php foreach($books as $book) :?>
+                        <tr>
+                            <td><?= $book->book_title ?></td>
+                            <td><?= $book->book_description ?></td>
+                            <td><?= $book->book_author ?></td>
+                            <td><?= $book->book_pages ?></td>
+                            <td><?= $book->book_created_at ?></td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </tbody>
             </table>
+            <?= $this->pagination_bootstrap->render() ?>
         </div>
 </main>

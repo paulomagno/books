@@ -25,7 +25,7 @@ class Books_model extends CI_Model {
 	 * Returns all books in application
 	 *
      * @param	none
-	 * @return	array
+	 * @return	object
 	 */
     public function getAllBooks()
     {

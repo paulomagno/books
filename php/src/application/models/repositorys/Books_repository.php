@@ -13,7 +13,8 @@ class Books_repository {
      * @param	none
 	 * @return	void
 	 */
-    public function __construct() {
+    public function __construct() 
+    {
         $this->CI =& get_instance();
         $this->CI->load->database();
     }
@@ -22,10 +23,10 @@ class Books_repository {
 	 * Returns all books
 	 *
      * @param	none
-	 * @return	array
+	 * @return	object
 	 */
-    public function getAllBooks() {
-        $query = $this->CI->db->get('books');
-        return $query->result_array();
+    public function getAllBooks() 
+    {
+        return $this->CI->db->get('books');
     }
 }
