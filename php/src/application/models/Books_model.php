@@ -77,4 +77,15 @@ class Books_model extends CI_Model {
     {
         return $this->bookRepository->delete($bookId);
     }
+
+    /**
+	 * Search a book in database
+	 *
+     * @param	string   $searchTerm
+     * @return	object
+	 */
+    public function search(string $searchTerm)
+    {
+        return $this->bookRepository->search($searchTerm);
+    }    
 }

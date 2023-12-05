@@ -132,6 +132,30 @@ class Books extends CI_Controller {
     }
 
    /**
+	* Method for search given book
+	*
+    * @param none
+    *
+	* @return void
+	*/
+    public function searchBook()
+    {
+        $searchTerm = $this->input->post('search_term');
+       
+        if(!empty($searchTerm)) 
+        {
+            $data['books'] = $this->pagination_bootstrap->config('index.php/books/index', $this->books_model->search($searchTerm));
+            $data['pageTitle'] = 'Pesquisa de Livros pelo termo : '.$searchTerm;
+            
+            $this->loadTemplates($data);
+            $this->load->view('pages/books-list', $data);
+        }
+        else {
+            redirect('books');
+        }
+    }
+
+   /**
 	* Method for load some application templates
 	*
     * @param  array $data

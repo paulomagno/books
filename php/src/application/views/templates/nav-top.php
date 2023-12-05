@@ -6,8 +6,8 @@
     Books App
   </a>
 	<div>
-		<form action="" method="post">
-			<input class="form-control form-control-dark" type="text" name="busca" id="busca" placeholder="Buscar Livro" aria-label="Buscar Livro" value="">
+		<form action="<?= base_url() ?>index.php/books/searchBook" method="post">
+			<input class="form-control form-control-dark" type="text" name="search_term" id="search_term" placeholder="Buscar Livro" aria-label="Buscar Livro" value="">
 		</form>
 	</div>
   <ul class="navbar-nav px-3">
@@ -27,19 +27,19 @@
             <span data-feather="plus-circle"></span>
           </a>
         </h6>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>index.php/books">
-              <span data-feather="file"></span>
-              Livros
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?= base_url() ?>index.php/weather">
-              <span data-feather="shopping-cart"></span>
-              Parâmetros Api de Clima
-            </a>
-		   </li>
-		</ul>
+          <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>index.php/books">
+                  <span data-feather="file"></span>
+                  Livros
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>index.php/weather">
+                  <span data-feather="shopping-cart"></span>
+                  Parâmetros Api de Clima
+                </a>
+              </li>
+          </ul>
       </div>
     </nav>

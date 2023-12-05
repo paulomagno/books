@@ -114,4 +114,23 @@ class Books_repository {
         
         return $success;
     }
+
+    /**
+	 * Search a book in database
+	 *
+     * @param	string   $searchTerm
+     *
+     * @return	object
+	 */
+    public function search(string $searchTerm)
+    {
+        try {
+           $this->CI->db->like('book_title', $searchTerm);
+           $this->CI->db->or_like('book_description', $searchTerm);
+           $this->CI->db->or_like('book_author', $searchTerm);  
+           return $this->CI->db->get('books'); 
+        } catch (\Exception $e) {
+           $success = false;
+        } 
+    }
 }
