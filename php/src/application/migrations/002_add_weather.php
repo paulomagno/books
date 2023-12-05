@@ -28,10 +28,27 @@ class Migration_Add_Weather extends CI_Migration {
                 ));
                 $this->dbforge->add_key('weather_id', TRUE);
                 $this->dbforge->create_table('weather');
+                $this->createWeatherData();
         }
 
         public function down()
         {
                 $this->dbforge->drop_table('weather');
+        }
+
+       /**
+	* Mocks datas for weather api
+        * @param  none
+        * @return void
+	*/
+        private function createWeatherData() 
+        {
+              $this->db->insert('weather', 
+                [
+                   'weather_city'    => 'Porto Alegre',
+                   'weather_state'   => 'RS',
+                   'weather_api_key' => '7886fba3'
+                ]
+             );           
         }
 }

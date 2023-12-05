@@ -140,6 +140,7 @@ class Pagination_Bootstrap {
     private function _return($data)
     {
         $i=0;
+        $result = null;
         foreach ($data as $key => $value) 
         {
             if($key >= $this->init)
