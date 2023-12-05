@@ -21,6 +21,7 @@ class Books extends CI_Controller {
         $this->load->model('books_model');
         $this->load->library('Pagination_bootstrap');
         $this->pagination_bootstrap->offset(3);
+        isAuthenticated();
     }
     
     /**

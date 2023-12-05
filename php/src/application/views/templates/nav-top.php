@@ -12,7 +12,7 @@
 	</div>
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="">Sair</a>
+      <a class="nav-link" href="<?= base_url() ?>index.php/auth/logout">Sair</a>
     </li>
   </ul>
 </nav>
