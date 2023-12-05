@@ -31,8 +31,8 @@ class Auth_repository {
         
         try {
             
-            $this->CI->db->where('user_name', $authData['user_name']);
-            $this->CI->db->where('user_password', $authData['user_password']);
+            $this->CI->db->where('user_name', trim($authData['user_name']));
+            $this->CI->db->where('user_password', trim(md5($authData['user_password'])));
             $existsUser = $this->CI->db->get('users')->num_rows();
             $loginValid = $existsUser > 0 ? true : false;
         

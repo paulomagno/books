@@ -44,7 +44,7 @@ class Migration_Add_Users extends CI_Migration {
               $this->db->insert('users', 
                 [
                    'user_name'     => 'admin',
-                   'user_password' => 'admin'
+                   'user_password' => md5('admin')
                 ]
              );           
         }
