@@ -27,7 +27,11 @@ class Books_repository {
 	 */
     public function getAllBooks() 
     {
-        return $this->CI->db->order_by('book_id', 'DESC')->get('books');
+        try {
+            return $this->CI->db->order_by('book_id', 'DESC')->get('books');
+        } catch (\Throwable $th) {
+             log_message('error', 'An error occurred while retrieving the books.' . $th->getMessage());
+        }
     }
 
     /**
@@ -42,7 +46,8 @@ class Books_repository {
         
         try {
             $this->CI->db->insert('books', $data);
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+           log_message('error', 'An error occurred while saving the book.' . $th->getMessage());
            $success = false;
         }  
         
@@ -66,8 +71,8 @@ class Books_repository {
                   'book_id' => $bookId
                 ]
             )->row_array();
-        } catch (\Exception $e) {
-          
+        } catch (\Throwable $th) {
+            log_message('error', 'An error occurred while retrieving the book.' . $th->getMessage());
         } 
         
         return $data;
@@ -87,7 +92,8 @@ class Books_repository {
         try {
            $this->CI->db->where('book_id', $bookId);
            $this->CI->db->update('books', $bookData);
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+           log_message('error', 'An error occurred while updating the book.' . $th->getMessage()); 
            $success = false;
         } 
         
@@ -108,7 +114,8 @@ class Books_repository {
         try {
            $this->CI->db->where('book_id', $bookId);
            $this->CI->db->delete('books');
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+           log_message('error', 'An error occurred while deleting the book.' . $th->getMessage());  
            $success = false;
         } 
         
@@ -129,7 +136,8 @@ class Books_repository {
            $this->CI->db->or_like('book_description', $searchTerm);
            $this->CI->db->or_like('book_author', $searchTerm);  
            return $this->CI->db->get('books'); 
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+           log_message('error', 'An error occurred while searching for the book.' . $th->getMessage());   
            $success = false;
         } 
     }

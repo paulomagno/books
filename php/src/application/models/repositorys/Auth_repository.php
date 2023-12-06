@@ -36,7 +36,8 @@ class Auth_repository {
             $existsUser = $this->CI->db->get('users')->num_rows();
             $loginValid = $existsUser > 0 ? true : false;
         
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+            log_message('error', 'An error occurred when trying to authenticate to the application.' . $th->getMessage());
             $loginValid = false;
         }  
 

@@ -29,7 +29,8 @@ class Weather_repository {
     {
         try {
             return $this->CI->db->get('weather')->row_array();
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+            log_message('error', 'An error occurred when trying to retrieve data from the weather api.' . $th->getMessage());
         }  
     }
 
@@ -45,7 +46,8 @@ class Weather_repository {
         
         try {
             $this->CI->db->update('weather', $weatherData);
-        } catch (\Exception $e) {
+        } catch (\Throwable $th) {
+           log_message('error', 'An error occurred when trying to update the weather api data.' . $th->getMessage());
            $success = false;
         } 
         
