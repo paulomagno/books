@@ -52,7 +52,10 @@ class Auth extends CI_Controller {
             redirect('books');
         }
         
-        redirect('auth');
+        $data['pageTitle']    = 'Books App - Login';
+        $data['errorMessage'] = 'Usuário e/ou senha incorretos';
+
+        $this->load->view('pages/login', $data);
     }
 
    /**

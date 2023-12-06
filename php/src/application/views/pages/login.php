@@ -35,6 +35,13 @@
     <body class="text-center">
         <form class="form-signin" method="post" action="<?= base_url() ?>index.php/Auth/authenticate">
             <img class="mb-4" src="https://previews.123rf.com/images/mix3r/mix3r1706/mix3r170600134/79338695-flat-bookshelf-vector-illustration-modern-design.jpg" alt="" width="72" height="72">
+            
+            <?php if(isset($errorMessage)) : ?>
+                <div class="alert alert-danger" role="alert">
+                    Usuário e/ou senha incorretos
+                </div>
+            <? endif; ?>    
+            
             <h1 class="h3 mb-3 font-weight-normal">Por favor, faça seu login</h1>
             <label for="inputEmail" class="sr-only">Usuário</label>
             <input type="text" name="user_name" id="user_name" class="form-control" placeholder="Usuário" required autofocus>
@@ -42,5 +49,6 @@
             <input type="password" name="user_password" id="user_password" class="form-control" placeholder="Senha" required>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
         </form>
+       
     </body>
 </html>
