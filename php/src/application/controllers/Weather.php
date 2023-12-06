@@ -34,7 +34,7 @@ class Weather extends CI_Controller {
 		$data['pageTitle'] = 'Parâmetros - Api de Clima';
         $data['weather'] = $this->weather_model->getData();
       
-        $this->loadTemplates($data);
+        loadTemplates($data);
         $this->load->view('pages/weather-form', $data);
 	}
    
@@ -82,23 +82,7 @@ class Weather extends CI_Controller {
         
         $data['dataWeather'] = $dataWeatherCity;
 
-        $this->loadTemplates($data);
+        loadTemplates($data);
         $this->load->view('pages/weather-info', $data);
-
-    }
-
-   /**
-	* Method for load some application templates
-	*
-    * @param  array $data
-    *
-	* @return void
-	*/
-    private function loadTemplates(array $data): void
-    {
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/nav-top');
-        $this->load->view('templates/footer');
-        $this->load->view('templates/js');
     }
 }

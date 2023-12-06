@@ -35,7 +35,7 @@ class Books extends CI_Controller {
 		$data['books'] = $this->pagination_bootstrap->config('index.php/books/index', $this->books_model->getAllBooks());
         $data['pageTitle'] = 'Listagem de Livros';
         
-        $this->loadTemplates($data);
+        loadTemplates($data);
         $this->load->view('pages/books-list', $data);
 	}
 
@@ -50,7 +50,7 @@ class Books extends CI_Controller {
 	{
 		$data['pageTitle'] = 'Novo Livro';
         
-        $this->loadTemplates($data);
+        loadTemplates($data);
 
         $this->load->view('pages/books-form', $data);
 	}
@@ -88,7 +88,7 @@ class Books extends CI_Controller {
 	{
 		$data['pageTitle'] = 'Edição de Livro';
         
-        $this->loadTemplates($data);
+        loadTemplates($data);
 
         $data['book'] = $this->books_model->getBookById($bookId);
 
@@ -151,26 +151,11 @@ class Books extends CI_Controller {
             $data['books'] = $this->pagination_bootstrap->config('index.php/books/index', $this->books_model->search($searchTerm));
             $data['pageTitle'] = 'Pesquisa de Livros pelo termo : '.$searchTerm;
             
-            $this->loadTemplates($data);
+            loadTemplates($data);
             $this->load->view('pages/books-list', $data);
         }
         else {
             redirect('books');
         }
-    }
-
-   /**
-	* Method for load some application templates
-	*
-    * @param  array $data
-    *
-	* @return void
-	*/
-    private function loadTemplates(array $data): void
-    {
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/nav-top');
-        $this->load->view('templates/footer');
-        $this->load->view('templates/js');
     }
 }
