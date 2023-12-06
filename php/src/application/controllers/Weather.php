@@ -48,6 +48,9 @@ class Weather extends CI_Controller {
     public function editApiParams(): void
     {
         $postData = $this->input->post();
+        
+        validateFields(['weather_city', 'weather_api_key', 'weather_state'], 'weather');
+        
         $weatherParamsUpdated = $this->weather_model->update($postData);
 
         if($weatherParamsUpdated) 

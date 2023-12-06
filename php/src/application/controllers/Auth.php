@@ -41,6 +41,9 @@ class Auth extends CI_Controller {
 	public function authenticate(): void
 	{
 		$postData = $this->input->post();
+        
+        validateFields(['user_name', 'user_password'], 'auth');
+
         $isAuthenticated = $this->auth_model->authenticate($postData);
 
         if ($isAuthenticated) 

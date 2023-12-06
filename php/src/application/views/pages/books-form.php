@@ -26,7 +26,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="book_description">Descrição</label>
-                        <textarea name="book_description" id="book_description" rows="5" class="form-control" required><?= isset($book) ? $book['book_description'] : '' ?></textarea>
+                        <textarea name="book_description" id="book_description" rows="5" class="form-control"><?= isset($book) ? $book['book_description'] : '' ?></textarea>
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="book_pages">Nº de Páginas</label>
-                        <input type="number" class="form-control" name="book_pages" id="book_pages" placeholder="Nº de Páginas" value="<?= isset($book) ? $book['book_pages'] : '' ?>" required>
+                        <input type="number" class="form-control" name="book_pages" id="book_pages" placeholder="Nº de Páginas" value="<?= isset($book) ? $book['book_pages'] : '' ?>">
                     </div>
                 </div>
 

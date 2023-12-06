@@ -66,9 +66,10 @@ class Books extends CI_Controller {
     {
         $postData = $this->input->post();
         $postData['book_created_at'] = date('Y-m-d H:i:s');
+
+        validateFields(['book_title', 'book_author'], 'books/newBook');
         
         $bookInserted = $this->books_model->save($postData);
-
         if($bookInserted) 
         {
             redirect('books');
@@ -104,6 +105,9 @@ class Books extends CI_Controller {
     public function editBook(int $bookId): void
     {
         $postData = $this->input->post();
+        
+        validateFields(['book_title', 'book_author'], 'books/viewBook/'.$bookId);
+        
         $bookUpdated = $this->books_model->update($bookId, $postData);
 
         if($bookUpdated) 
