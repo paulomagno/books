@@ -27,7 +27,7 @@
                             <td><?= $book->book_description ?></td>
                             <td><?= $book->book_author ?></td>
                             <td><?= $book->book_pages ?></td>
-                            <td><?= $book->book_created_at ?></td>
+                            <td><?= formatDate('d/m/Y H:i:s', $book->book_created_at) ?></td>
                             <td>
                                 <a href="<?= base_url() ?>index.php/books/viewBook/<?= $book->book_id ?>" class="btn btn-sm btn-warning">
                                     <i class="fas fa-pencil-alt"> </i>
