@@ -7,7 +7,6 @@
                 </div>
             </div>
         </div>
-
         <div class="table-responsive">
             <table class="display dataTable table table-bordered table-hover" id="booksTable">
                 <thead>

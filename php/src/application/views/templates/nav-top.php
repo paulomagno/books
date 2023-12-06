@@ -40,6 +40,12 @@
                   Parâmetros Api de Clima
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>index.php/weather/view">
+                  <span data-feather="shopping-cart"></span>
+                  Consulta de Clima da Região
+                </a>
+              </li>
           </ul>
       </div>
     </nav>

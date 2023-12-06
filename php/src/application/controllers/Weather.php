@@ -19,6 +19,7 @@ class Weather extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('weather_model');
+        $this->load->library('Weather_api');
         isAuthenticated();
     }
     
@@ -53,6 +54,33 @@ class Weather extends CI_Controller {
         {
            redirect('weather');
         }
+
+    }
+
+   /**
+	* Method for show screen weather of a region (City, State)
+	*
+    * @param none
+    *
+	* @return void
+	*/
+    public function view(): void
+    {
+        $data['pageTitle'] = 'Informações do Clima';
+        $dataWeather = $this->weather_model->getData();
+        
+        $dataWeatherCity= $this->weather_api->requestWeather(
+            [
+                'city_name' => $dataWeather['weather_city'].",".$dataWeather['weather_state'],
+                'fields'    => 'temp,description,city,sunrise,sunset,wind_speedy'
+            ], 
+            $dataWeather['weather_api_key']
+        );
+        
+        $data['dataWeather'] = $dataWeatherCity;
+
+        $this->loadTemplates($data);
+        $this->load->view('pages/weather-info', $data);
 
     }
 
